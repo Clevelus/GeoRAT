@@ -1,0 +1,6 @@
+D:\RAT\GeoRat\GeoRat\GeoRAT.Client\obj\Debug\GeoRAT.Client.csprojResolveAssemblyReference.cache
+D:\RAT\GeoRat\GeoRat\GeoRAT.Client\bin\Debug\GeoRAT.Client.exe.config
+D:\RAT\GeoRat\GeoRat\GeoRAT.Client\bin\Debug\GeoRAT.Client.exe
+D:\RAT\GeoRat\GeoRat\GeoRAT.Client\bin\Debug\GeoRAT.Client.pdb
+D:\RAT\GeoRat\GeoRat\GeoRAT.Client\obj\Debug\GeoRAT.Client.exe
+D:\RAT\GeoRat\GeoRat\GeoRAT.Client\obj\Debug\GeoRAT.Client.pdb

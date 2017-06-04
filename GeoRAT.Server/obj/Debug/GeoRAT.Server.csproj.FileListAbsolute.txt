@@ -1,0 +1,9 @@
+D:\RAT\GeoRat\GeoRat\GeoRAT.Server\obj\Debug\GeoRAT.Server.csprojResolveAssemblyReference.cache
+D:\RAT\GeoRat\GeoRat\GeoRAT.Server\obj\Debug\GeoRAT.Server.Form1.resources
+D:\RAT\GeoRat\GeoRat\GeoRAT.Server\obj\Debug\GeoRAT.Server.Properties.Resources.resources
+D:\RAT\GeoRat\GeoRat\GeoRAT.Server\obj\Debug\GeoRAT.Server.csproj.GenerateResource.Cache
+D:\RAT\GeoRat\GeoRat\GeoRAT.Server\bin\Debug\GeoRAT.Server.exe.config
+D:\RAT\GeoRat\GeoRat\GeoRAT.Server\bin\Debug\GeoRAT.Server.exe
+D:\RAT\GeoRat\GeoRat\GeoRAT.Server\bin\Debug\GeoRAT.Server.pdb
+D:\RAT\GeoRat\GeoRat\GeoRAT.Server\obj\Debug\GeoRAT.Server.exe
+D:\RAT\GeoRat\GeoRat\GeoRAT.Server\obj\Debug\GeoRAT.Server.pdb
