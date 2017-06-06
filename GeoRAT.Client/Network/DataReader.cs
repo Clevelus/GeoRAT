@@ -52,7 +52,7 @@ namespace Cliet
         }
 
 
-        //Reads incoming data from client, based on length of data we got earlier 
+        //Reads incoming data from server, based on length of data we got earlier 
         //Keeps reading until it gets exact amount of bytes we need 
         private void ReceiveMessage(int size)
         {
