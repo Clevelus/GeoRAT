@@ -1,20 +1,28 @@
 
-This is improved version of Ratty remote administration tool. 
-Features of new version :
+Simple remote administration tool concept. 
 
+Features of current version : 
 
-1. Asynchronous connection
+1. Asynchronous connection using Sockets (No TCPClient or other higher level wrappers) 
+2. Simple protocol based on message-length prefixes. This feature ensures that every packet will get delivered from client to server and vice-versa. Since TCP is a stream and does't operate on RAW packets unlike UDP, it's necessary to check if data arrived in its original form. The issue is not showing in LAN enviroment, but when packets are sent over internet with higher latency, its possible that bytes in stream could get messed up. 
+3. Simple traffic encryption using GZIP. Before being sent, every byte[] array is compressed, then decompressed on receiving side. Makes data exchange less heavy. 
+4. Simple packet structure and serialization. Every packet gets constructed using special class, object of this class is serialized into byte[] array, deserialized on receiving side. 
+5. GeoIP using online API (Will change to local use of GeoIP.dat) 
+6. Updated user interface 
 
-2. Data exchange is now estabilished using simple protocol. Before messages are sent over socket, their length is calculated and sent first. Server/Client receives message length and starts waiting for  specified amount of data. This feature guarantees that data will be delivered in its original form without being fragmented. Since TCP is a stream and doesn't operate on raw packets unlike UDP, this is a necessary feature for secure data exchange. 
+Current commands include - Open website, disconnect, send message, reboot. 
 
-3. Server and client now support data compression. Every byte[] array is compressed using GZIP before being sent and decompressed on receiving side. Makes data less heavy. 
+In progress : 
 
-4. Accurate GeoIP 
+1. Remote desktop 
+2. Traffic encryption
+3. Finish GUI (Add builder and other stuff) 
+4. Everything else that comes to my mind 
 
-5. Code is now structured and organized, few Interfaces added. Every class has its own folder.
+This project is not meant to be professional tool, i am working on it only for practice and because of my personal interest in network programming using C#. It could be very useful for beginners who want to learn asynchronous socketing, basics of serialization and secure data exchange. 
 
-This tool is a good example of networking using C# sockets. Its easier to exchange large amounts of information now, such as screenshots for desktop sharing feature or w/e. Unlike first version, this one will be reliable not only in LAN but over internet with big latency too. 
+Project is in active development, will update GitHub whenever i add new functions. 
 
-Screenshot : 
+Screenshot of new GUI : 
 
-![bytes](https://cloud.githubusercontent.com/assets/26791677/26762406/938ab888-48f6-11e7-8c69-077d40684938.png)
+![rat](https://user-images.githubusercontent.com/26791677/26846687-5fcce056-4aaf-11e7-91c0-adf82c8388e5.png)
