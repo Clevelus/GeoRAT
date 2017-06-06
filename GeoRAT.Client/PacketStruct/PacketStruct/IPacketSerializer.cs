@@ -1,6 +1,8 @@
 ﻿
 
 
+using GeoRAT.Client.PacketStruct.PacketStruct;
+
 namespace GeoRAT.Client.PacketStruct
 {
     //Packet serializer interface

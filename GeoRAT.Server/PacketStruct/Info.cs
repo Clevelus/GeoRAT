@@ -11,11 +11,13 @@ namespace GeoRAT.Server.PacketStruct
         public string Country { get;  set; }
         public string OS { get;  set; }
         public string UserName { get;  set; }
-        public Info(string country, string os, string username)
+        public string CPU { get; set; }
+        public Info(string country, string os, string username, string cpu)
         {
             Country = country;
             OS = os;
             UserName = username;
+            CPU = cpu;
 
         }
 

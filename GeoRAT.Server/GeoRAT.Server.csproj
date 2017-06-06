@@ -51,6 +51,7 @@
     <Compile Include="CommandHandlers\CommandSerializer.cs" />
     <Compile Include="CommandHandlers\ICommandSerializer.cs" />
     <Compile Include="Compressor\Compression.cs" />
+    <Compile Include="Design\Theme.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,12 +59,19 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Net\DataHandler.cs" />
+    <Compile Include="Net\DesktopSharing\RemoteDesktop.cs" />
     <Compile Include="Net\NetworkServer.cs" />
     <Compile Include="PacketStruct\Info.cs" />
     <Compile Include="PacketStruct\IPacketSerializer.cs" />
     <Compile Include="PacketStruct\Serializer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Desktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Desktop.Designer.cs">
+      <DependentUpon>Desktop.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -75,7 +83,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Desktop.resx">
+      <DependentUpon>Desktop.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -89,6 +101,20 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Icons8-Windows-8-Messaging-Message-Group.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sbstnblnd-Plateau-Apps-reboot.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconica-Pastel-Url-history.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fatcow-Farm-Fresh-Disconnect.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delacro-Id-Desktop.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -4,6 +4,7 @@ using System.IO;
 using System.Management;
 using System.Net;
 using System.Xml.Serialization;
+using Microsoft.Win32;
 
 
 namespace Client
@@ -86,10 +87,10 @@ namespace Client
             return name;
         }
 
-        public static Process[] GetProcess()
+        public static string GetProcessorModel()
         {
-            Process[] Processlist = Process.GetProcesses();
-            return Processlist;
+            RegistryKey reg = Registry.LocalMachine.OpenSubKey("HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0");
+            return (string)reg.GetValue("ProcessorNameString");
         }
 
     }

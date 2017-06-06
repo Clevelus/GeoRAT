@@ -15,6 +15,7 @@ namespace GeoRAT.Server.PacketStruct
             writer.Write(i.Country);
             writer.Write(i.OS);
             writer.Write(i.UserName);
+            writer.Write(i.CPU);
             return stream.ToArray();
         }
 
@@ -26,6 +27,7 @@ namespace GeoRAT.Server.PacketStruct
             i.Country = read.ReadString();
             i.OS = read.ReadString();
             i.UserName = read.ReadString();
+            i.CPU = read.ReadString(); 
             return i;
         }
     }
