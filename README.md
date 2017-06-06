@@ -5,7 +5,7 @@ Features of current version :
 
 1. Asynchronous connection using Sockets (No TCPClient or other higher level wrappers) 
 2. Simple protocol based on message-length prefixes. This feature ensures that every packet will get delivered from client to server and vice-versa. Since TCP is a stream and does't operate on RAW packets unlike UDP, it's necessary to check if data arrived in its original form. The issue is not showing in LAN enviroment, but when packets are sent over internet with higher latency, its possible that bytes in stream could get messed up. 
-3. Simple traffic encryption using GZIP. Before being sent, every byte[] array is compressed, then decompressed on receiving side. Makes data exchange less heavy. 
+3. Simple traffic compression using GZIP. Before being sent, every byte[] array is compressed, then decompressed on receiving side. Makes data exchange less heavy. 
 4. Simple packet structure and serialization. Every packet gets constructed using special class, object of this class is serialized into byte[] array, deserialized on receiving side. 
 5. GeoIP using online API (Will change to local use of GeoIP.dat) 
 6. Updated user interface 
