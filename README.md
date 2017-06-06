@@ -11,6 +11,7 @@ Features of current version :
 6. Updated user interface 
 
 Current commands include - Open website, disconnect, send message, reboot. 
+UI shows detailed information about client (Country, Username, CPU, IP and small country flag icon) 
 
 In progress : 
 
