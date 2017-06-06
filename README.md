@@ -18,7 +18,8 @@ In progress :
 1. Remote desktop 
 2. Traffic encryption
 3. Finish GUI (Add builder and other stuff) 
-4. Everything else that comes to my mind 
+4. Work on a better, more advanced and easy to use packet structure
+5. Everything else that comes to my mind 
 
 This project is not meant to be professional tool, i am working on it only for practice and because of my personal interest in network programming using C#. It could be very useful for beginners who want to learn asynchronous socketing, basics of serialization and secure data exchange. 
 
