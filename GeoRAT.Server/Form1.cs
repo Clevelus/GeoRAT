@@ -1,13 +1,14 @@
 ﻿
 using System;
-using System.Drawing;
-using System.IO;
 using System.Net.Sockets;
 using System.Windows.Forms;
 using GeoRAT.Server.CommandHandlers;
 using GeoRAT.Server.Net;
-using GeoRAT.Server.PacketStruct;
+using GeoRAT.Core.Commands;
+using GeoRAT.Core.PacketStruct;
+using GeoRAT.Core.Compressor;
 using Microsoft.VisualBasic;
+
 
 
 namespace GeoRAT.Server
@@ -22,6 +23,8 @@ namespace GeoRAT.Server
             
         }
 
+        #region Start
+
         private void xylosButton1_Click(object sender, EventArgs e)
         {
             try
@@ -33,26 +36,35 @@ namespace GeoRAT.Server
                 ns.OnConnected += OnConnectedHandler;
                 ns.Start();
             }
-            catch 
+            catch
             {
-                MessageBox.Show("Enter valid IP address and port!", "Something went wrong", MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                MessageBox.Show("Enter valid IP address and port!", "Something went wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        #endregion
+
+
+        #region Connection
         //Handle new connection 
         private void OnConnectedHandler(Socket s)
         {
+
             DataHandler handle = new DataHandler(s); //We got socket, lets make DataHandler using it, which does all operations on specified socket (reading data)
             handle.OnDisconnected += OnDisconnectedHandler; //Associate datahandler events with handler functions 
             handle.OnReceived += OnDataReceived;
 
         }
 
+
+        #endregion
+
+        #region Data
         //Received data from client, lets decompress, deserialize it and then add info to listview 
         private void OnDataReceived(byte[] buffer, Socket received)
         {
             Serializer infoSerializer = new Serializer();
-            var decompress = Compressor.Compression.Decompress(buffer);
+            var decompress = Compression.Decompress(buffer);
             var data = infoSerializer.Deserialize(decompress);
 
             //Invokes Action delegate and begins processing of information we got so far 
@@ -87,8 +99,15 @@ namespace GeoRAT.Server
                 }));
         }
 
+
+
+        #endregion
+
+        #region Disconnection
+
         private void UpdateOnline()
         {
+            --ClientsConnected;
         }
         //if client disconnects, remove it from listview 
 
@@ -109,15 +128,10 @@ namespace GeoRAT.Server
         }
 
 
-        
-        //-********************************************************-//
+        #endregion
 
-            //COMMAND SENDING FUNCTIONS//
-
-
-
-
-            //send Disconnect
+        #region Send Commands 
+        //send Disconnect
         private void disconnectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             foreach (ListViewItem i in lvConnections.SelectedItems)
@@ -165,7 +179,7 @@ namespace GeoRAT.Server
                 
             }
         }
+        #endregion
 
-       
     }
 }

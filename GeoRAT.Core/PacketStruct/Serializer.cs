@@ -1,11 +1,12 @@
 ﻿
 using System.IO;
+using GeoRAT.Core.Interfaces;
 
-namespace GeoRAT.Server.PacketStruct
+namespace GeoRAT.Core.PacketStruct
 {
     //This class implements IPacketSerializer interface and serializes Info class into byte[] array 
     //It also deserializes byte[] array back to Info 
-    class Serializer : IPacketSerializer
+   public class Serializer : IPacketSerializer<Info>
     {
 
         public  byte[] Serialize(Info i)

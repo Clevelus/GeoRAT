@@ -46,12 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandHandlers\Commands.cs" />
     <Compile Include="CommandHandlers\CommandSender.cs" />
-    <Compile Include="CommandHandlers\CommandSerializer.cs" />
-    <Compile Include="CommandHandlers\ICommandSerializer.cs" />
-    <Compile Include="Compressor\Compression.cs" />
     <Compile Include="Design\Theme.cs" />
+    <Compile Include="DesktopViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesktopViewer.Designer.cs">
+      <DependentUpon>DesktopViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,9 +63,6 @@
     <Compile Include="Net\DataHandler.cs" />
     <Compile Include="Net\DesktopSharing\RemoteDesktop.cs" />
     <Compile Include="Net\NetworkServer.cs" />
-    <Compile Include="PacketStruct\Info.cs" />
-    <Compile Include="PacketStruct\IPacketSerializer.cs" />
-    <Compile Include="PacketStruct\Serializer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Desktop.cs">
@@ -72,6 +71,10 @@
     <Compile Include="Desktop.Designer.cs">
       <DependentUpon>Desktop.cs</DependentUpon>
     </Compile>
+    <Compile Include="Runtime\EmbbedAssembly.cs" />
+    <EmbeddedResource Include="DesktopViewer.resx">
+      <DependentUpon>DesktopViewer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -115,6 +118,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Delacro-Id-Desktop.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GeoRAT.Core\GeoRAT.Core.csproj">
+      <Project>{7d239417-861c-48e7-bc0e-2bb8631fc0bc}</Project>
+      <Name>GeoRAT.Core</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Libraries\GeoRAT.Core.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

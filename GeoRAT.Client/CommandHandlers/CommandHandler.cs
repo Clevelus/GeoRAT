@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Runtime.InteropServices;
+using GeoRAT.Core.Commands;
 
 
 namespace GeoRAT.Client.CommandHandlers

@@ -3,12 +3,10 @@ using System.IO;
 using System.IO.Compression;
 
 
-namespace GeoRAT.Client.Compressor
+namespace GeoRAT.Core.Compressor
 {
-    class Compression
-    {
-        //Simple GZIP compression class i found on google, saved me 5 minutes of my life
-        //Works good 
+    public class Compression
+    { 
 
         public static byte[] Compress(byte[] data)
         {

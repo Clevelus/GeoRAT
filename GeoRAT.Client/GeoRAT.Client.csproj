@@ -46,22 +46,28 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandHandlers\CommandHandler.cs" />
-    <Compile Include="CommandHandlers\Commands.cs" />
-    <Compile Include="CommandHandlers\CommandSerializer.cs" />
-    <Compile Include="CommandHandlers\ICommandSerializer.cs" />
-    <Compile Include="Compressor\Compression.cs" />
+    <Compile Include="Core\RemoteDesktopHandler.cs" />
     <Compile Include="Network\ClientNetwork.cs" />
     <Compile Include="Network\DataReader.cs" />
-    <Compile Include="PacketStruct\PacketStruct\Info.cs" />
-    <Compile Include="PacketStruct\PacketStruct\IPacketSerializer.cs" />
-    <Compile Include="PacketStruct\PacketStruct\Serializer.cs" />
     <Compile Include="PCInfo\GetInfo.cs" />
     <Compile Include="PCInfo\Response.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Runtime\EmbbedAssembly.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GeoRAT.Core\GeoRAT.Core.csproj">
+      <Project>{7d239417-861c-48e7-bc0e-2bb8631fc0bc}</Project>
+      <Name>GeoRAT.Core</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Libraries\GeoRAT.Core.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

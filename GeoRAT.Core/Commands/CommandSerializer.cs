@@ -1,12 +1,13 @@
 ﻿
 
 using System.IO;
+using GeoRAT.Core.Interfaces;
 
 
-namespace GeoRAT.Client.CommandHandlers
+namespace GeoRAT.Core.Commands
 {
     //This class implements ICommandSerializer interface and simply serializes commands object into byte[] array and vice-versa 
-    class CommandSerializer : ICommandSerializer
+    public class CommandSerializer : ICommandSerializer<Commands>
     {
 
 

@@ -39,6 +39,12 @@
             this.Flags = new System.Windows.Forms.ImageList(this.components);
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.xylosTextBox2 = new XylosTextBox();
+            this.xylosTextBox1 = new XylosTextBox();
+            this.xylosButton1 = new XylosButton();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.lvConnections = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -47,11 +53,6 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.xylosTabControl1 = new XylosTabControl();
-            this.xylosButton1 = new XylosButton();
-            this.xylosTextBox1 = new XylosTextBox();
-            this.xylosTextBox2 = new XylosTextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.Commands.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -372,6 +373,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.White;
+            this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Controls.Add(this.label1);
             this.tabPage2.Controls.Add(this.xylosTextBox2);
@@ -385,6 +387,74 @@
             this.tabPage2.Size = new System.Drawing.Size(1025, 557);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Settings";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(421, 22);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(210, 32);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Network settings";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 140);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 20);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Port";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 108);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(21, 20);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "IP";
+            // 
+            // xylosTextBox2
+            // 
+            this.xylosTextBox2.EnabledCalc = true;
+            this.xylosTextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.xylosTextBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
+            this.xylosTextBox2.Location = new System.Drawing.Point(44, 133);
+            this.xylosTextBox2.MaxLength = 32767;
+            this.xylosTextBox2.MultiLine = false;
+            this.xylosTextBox2.Name = "xylosTextBox2";
+            this.xylosTextBox2.ReadOnly = false;
+            this.xylosTextBox2.Size = new System.Drawing.Size(152, 27);
+            this.xylosTextBox2.TabIndex = 2;
+            this.xylosTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.xylosTextBox2.UseSystemPasswordChar = false;
+            // 
+            // xylosTextBox1
+            // 
+            this.xylosTextBox1.EnabledCalc = true;
+            this.xylosTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.xylosTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
+            this.xylosTextBox1.Location = new System.Drawing.Point(44, 102);
+            this.xylosTextBox1.MaxLength = 32767;
+            this.xylosTextBox1.MultiLine = false;
+            this.xylosTextBox1.Name = "xylosTextBox1";
+            this.xylosTextBox1.ReadOnly = false;
+            this.xylosTextBox1.Size = new System.Drawing.Size(153, 26);
+            this.xylosTextBox1.TabIndex = 1;
+            this.xylosTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.xylosTextBox1.UseSystemPasswordChar = false;
+            // 
+            // xylosButton1
+            // 
+            this.xylosButton1.EnabledCalc = true;
+            this.xylosButton1.Location = new System.Drawing.Point(44, 166);
+            this.xylosButton1.Name = "xylosButton1";
+            this.xylosButton1.Size = new System.Drawing.Size(151, 24);
+            this.xylosButton1.TabIndex = 0;
+            this.xylosButton1.Text = "Start";
+            this.xylosButton1.Click += new XylosButton.ClickEventHandler(this.xylosButton1_Click);
             // 
             // tabPage1
             // 
@@ -462,64 +532,6 @@
             this.xylosTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.xylosTabControl1.TabIndex = 6;
             // 
-            // xylosButton1
-            // 
-            this.xylosButton1.EnabledCalc = true;
-            this.xylosButton1.Location = new System.Drawing.Point(58, 109);
-            this.xylosButton1.Name = "xylosButton1";
-            this.xylosButton1.Size = new System.Drawing.Size(152, 36);
-            this.xylosButton1.TabIndex = 0;
-            this.xylosButton1.Text = "Start";
-            this.xylosButton1.Click += new XylosButton.ClickEventHandler(this.xylosButton1_Click);
-            // 
-            // xylosTextBox1
-            // 
-            this.xylosTextBox1.EnabledCalc = true;
-            this.xylosTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.xylosTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.xylosTextBox1.Location = new System.Drawing.Point(57, 44);
-            this.xylosTextBox1.MaxLength = 32767;
-            this.xylosTextBox1.MultiLine = false;
-            this.xylosTextBox1.Name = "xylosTextBox1";
-            this.xylosTextBox1.ReadOnly = false;
-            this.xylosTextBox1.Size = new System.Drawing.Size(153, 26);
-            this.xylosTextBox1.TabIndex = 1;
-            this.xylosTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.xylosTextBox1.UseSystemPasswordChar = false;
-            // 
-            // xylosTextBox2
-            // 
-            this.xylosTextBox2.EnabledCalc = true;
-            this.xylosTextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.xylosTextBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.xylosTextBox2.Location = new System.Drawing.Point(58, 76);
-            this.xylosTextBox2.MaxLength = 32767;
-            this.xylosTextBox2.MultiLine = false;
-            this.xylosTextBox2.Name = "xylosTextBox2";
-            this.xylosTextBox2.ReadOnly = false;
-            this.xylosTextBox2.Size = new System.Drawing.Size(152, 27);
-            this.xylosTextBox2.TabIndex = 2;
-            this.xylosTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.xylosTextBox2.UseSystemPasswordChar = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 50);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(21, 20);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "IP";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 83);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 20);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Port";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
@@ -531,7 +543,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
-            this.Text = "GeoRAT 1.0.0";
+            this.Text = "GeoRAT 1.0.0 ";
             this.Commands.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
@@ -564,6 +576,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private XylosTabControl xylosTabControl1;
+        private System.Windows.Forms.Label label3;
     }
 }
 

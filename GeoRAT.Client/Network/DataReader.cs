@@ -7,26 +7,32 @@ namespace Cliet
 {
     class DataReader
     {
-
+        #region Declarations
         //delegates and events
 
         public delegate void Received( byte[] buffer, int MessageSize);
         public event Received OnReceived;
         public delegate void Disconnected(Socket s);
         public event Disconnected OnDisconnected;
-
-        //
-
         //fields and properties 
-        private Socket ClientReader; 
+        private Socket ClientReader;
         private byte[] lenbuffer = new byte[4];
-        
+
+        #endregion
+
+        #region Constructor
+
         public DataReader(Socket s)
         {
             ClientReader = s;
             ClientReader.BeginReceive(new byte[] { 0 }, 0, 0, SocketFlags.None, ReceivedCallback, null);
         }
 
+
+        #endregion
+
+
+        #region ReceiveCallback
         //Begin reading data from server here 
 
         private void ReceivedCallback(IAsyncResult result)
@@ -46,13 +52,16 @@ namespace Cliet
             }
             catch
             {
-                 
+
                 OnDisconnected?.Invoke(ClientReader);
             }
         }
 
+        #endregion
 
-        //Reads incoming data from server, based on length of data we got earlier 
+
+        #region ReceiveMessage
+        //Reads incoming data from client, based on length of data we got earlier 
         //Keeps reading until it gets exact amount of bytes we need 
         private void ReceiveMessage(int size)
         {
@@ -76,11 +85,19 @@ namespace Cliet
             catch
             {
 
-                OnDisconnected?.Invoke(ClientReader); 
+                OnDisconnected?.Invoke(ClientReader);
             }
         }
 
 
+
+
+        #endregion
+
+
+        #region Send
+
+        
         //Send data to server via this function 
         public void Send(byte[] buf)
         {
@@ -93,6 +110,6 @@ namespace Cliet
         }
         
     }
+#endregion
 
-    
 }

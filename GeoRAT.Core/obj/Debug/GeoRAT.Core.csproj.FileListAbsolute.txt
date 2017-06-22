@@ -1,0 +1,5 @@
+D:\RAT\GeoRat\GeoRat\GeoRAT.Core\bin\Debug\GeoRAT.Core.dll
+D:\RAT\GeoRat\GeoRat\GeoRAT.Core\bin\Debug\GeoRAT.Core.pdb
+D:\RAT\GeoRat\GeoRat\GeoRAT.Core\obj\Debug\GeoRAT.Core.csprojResolveAssemblyReference.cache
+D:\RAT\GeoRat\GeoRat\GeoRAT.Core\obj\Debug\GeoRAT.Core.dll
+D:\RAT\GeoRat\GeoRat\GeoRAT.Core\obj\Debug\GeoRAT.Core.pdb

