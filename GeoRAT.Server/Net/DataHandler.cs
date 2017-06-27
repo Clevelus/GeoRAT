@@ -78,7 +78,6 @@ namespace GeoRAT.Server.Net
                 var len = BitConverter.ToInt32(PrefixBuffer, 0); //Deserialize received bytes back to INT and get length of packet
                 MessageLength = len; //Assign length to global constant 
                 ReceiveMessage(MessageLength); //Begin reading incoming packets based on length now 
-
             }
             catch
             {
@@ -99,7 +98,6 @@ namespace GeoRAT.Server.Net
             try
             {
                 int total = 0;
-
                 byte[] buffer = new byte[size];
                 do
                 {

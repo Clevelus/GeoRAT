@@ -39,13 +39,11 @@ namespace GeoRAT.Server
             }
             else
             {
-
                 NetworkServer ns = new NetworkServer(ip, port);
                 ns.OnConnected += OnConnectedHandler;
                 ns.Start();
                 MessageBox.Show(ip + ":" + port.ToString(), "Listener started on", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
-
             }
                     
         }

@@ -70,7 +70,6 @@
       <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Libraries\GeoRAT.Core.dll" />
   </ItemGroup>
