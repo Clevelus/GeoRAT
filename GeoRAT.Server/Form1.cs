@@ -29,9 +29,9 @@ namespace GeoRAT.Server
 
         private void xylosButton1_Click(object sender, EventArgs e)
         {
-            var ip = xylosTextBox1.Text;
+            var ip = IpTextBox.Text;
             int port;
-            bool convert = Int32.TryParse(xylosTextBox2.Text, out  port);
+            bool convert = Int32.TryParse(PortTextBox.Text, out  port);
             if (!convert && string.IsNullOrEmpty(ip) || !convert || string.IsNullOrEmpty(ip))
             {
                 MessageBox.Show("Enter correct IP and Port!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -47,8 +47,7 @@ namespace GeoRAT.Server
                     MessageBoxIcon.Information);
 
             }
-            
-                
+                    
         }
 
         #endregion
@@ -62,6 +61,7 @@ namespace GeoRAT.Server
             DataHandler handle = new DataHandler(s); //We got socket, lets make DataHandler using it, which does all operations on specified socket (reading data)
             handle.OnDisconnected += OnDisconnectedHandler; //Associate datahandler events with handler functions 
             handle.OnReceived += OnDataReceived;
+            
 
         }
 
@@ -83,6 +83,8 @@ namespace GeoRAT.Server
                     var ip = received.RemoteEndPoint.ToString().Split(':');
                     //find flag for our Country 
                     int index = 0;
+
+
                     for (int i = 0; i < Flags.Images.Count - 1; i++)
                     {
                         string name = Flags.Images.Keys[i].ToLower();

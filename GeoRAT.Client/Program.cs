@@ -66,8 +66,16 @@ namespace GeoRAT.Client
             var cmp = Compression.Compress(buf); //Compress data using GZIP 
             var len = cmp.Length;
             var sendLen = BitConverter.GetBytes(len);
-            reader.Send(sendLen); //Send data length
-            reader.Send(cmp); //Send data itself 
+            if (sendLen.Length != 0 && cmp.Length != 0 )
+            {
+                reader.Send(sendLen); //Send data length
+                reader.Send(cmp); //Send data itself 
+
+            }
+            else
+            {
+                 Process.GetCurrentProcess().Kill();
+            }
 
 
         }

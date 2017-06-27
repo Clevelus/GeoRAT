@@ -2,6 +2,7 @@
 using System.Net.Sockets;
 using GeoRAT.Core.Commands;
 using GeoRAT.Server.Net;
+using GeoRAT.Server.Net.DesktopSharing;
 
 
 namespace GeoRAT.Server.CommandHandlers

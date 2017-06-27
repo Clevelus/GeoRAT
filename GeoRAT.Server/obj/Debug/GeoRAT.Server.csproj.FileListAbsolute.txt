@@ -9,3 +9,5 @@ D:\RAT\GeoRat\GeoRat\GeoRAT.Server\obj\Debug\GeoRAT.Server.exe
 D:\RAT\GeoRat\GeoRat\GeoRAT.Server\obj\Debug\GeoRAT.Server.pdb
 D:\RAT\GeoRat\GeoRat\GeoRAT.Server\obj\Debug\GeoRAT.Server.Desktop.resources
 D:\RAT\GeoRat\GeoRat\GeoRAT.Server\obj\Debug\GeoRAT.Server.DesktopViewer.resources
+D:\RAT\GeoRat\GeoRat\GeoRAT.Server\bin\Debug\StreamLibrary.dll
+D:\RAT\GeoRat\GeoRat\GeoRAT.Server\bin\Debug\StreamLibrary.pdb

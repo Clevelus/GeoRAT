@@ -39,13 +39,14 @@ namespace Cliet
         {
             try
             {
-                int total = ClientReader.EndReceive(result);
-                int left = sizeof(int) - total; // How much bytes left to receive. sizeof(int) indicates that we want to receive 4 bytes in total 
-                while (ClientReader.Available < left) //Wait for rest of bytes
+                
+                int totalReceived = ClientReader.EndReceive(result);
+                int left = sizeof(int) - totalReceived; // How much bytes left to receive. 
+                do
                 {
-                    Thread.SpinWait(100);
-                }
-                ClientReader.Receive(lenbuffer, total, left, SocketFlags.None); //Get all bytes now 
+                    var recv =  ClientReader.Receive(lenbuffer, totalReceived, left, SocketFlags.None);
+                    left -= recv;
+                } while (left != 0);
                 var len = BitConverter.ToInt32(lenbuffer, 0); //Deserialize received bytes back to INT and get length of packet
                 ReceiveMessage(len); //Begin reading incoming packets based on length now 
                 ClientReader.BeginReceive(new byte[] { 0 }, 0, 0, SocketFlags.None, ReceivedCallback, null);
