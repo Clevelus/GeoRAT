@@ -3,7 +3,7 @@ using System.Net.Sockets;
 using System.Threading;
 
 
-namespace Cliet
+namespace GeoRAT.Client.Network
 {
     class DataReader
     {
