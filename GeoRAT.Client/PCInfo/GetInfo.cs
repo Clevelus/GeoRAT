@@ -9,7 +9,7 @@ using Microsoft.Win32;
 
 namespace Client
 {
-    class GetInfo
+    class GetInfo 
     {
         //Get PC information class 
 
@@ -21,13 +21,18 @@ namespace Client
 
 
             string OS = string.Empty;
-            ManagementObjectSearcher MS = new ManagementObjectSearcher("SELECT Caption FROM Win32_OperatingSystem");
-
-            foreach (ManagementObject _m in MS.Get())
+            using (ManagementObjectSearcher MS = new ManagementObjectSearcher("SELECT Caption FROM Win32_OperatingSystem"))
             {
-                OS = _m["Caption"].ToString();
+
+              foreach (ManagementObject _m in MS.Get())
+                {
+                    OS = _m["Caption"].ToString();
+                }
             }
+
+        
             return OS;
+            
 
         }
 
@@ -89,9 +94,14 @@ namespace Client
 
         public static string GetProcessorModel()
         {
-            RegistryKey reg = Registry.LocalMachine.OpenSubKey("HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0");
-            return (string)reg.GetValue("ProcessorNameString");
+            using (RegistryKey reg = Registry.LocalMachine.OpenSubKey("HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0"))
+            {
+                return (string)reg.GetValue("ProcessorNameString");
+
+            }
+
         }
 
+        
     }
 }
