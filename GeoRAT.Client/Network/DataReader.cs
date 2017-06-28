@@ -3,7 +3,7 @@ using System.Net.Sockets;
 using System.Threading;
 
 
-namespace Cliet
+namespace GeoRAT.Client.Network
 {
     class DataReader
     {
@@ -31,7 +31,7 @@ namespace Cliet
 
         #endregion
 
-
+    
         #region ReceiveCallback
         //Begin reading data from server here 
 

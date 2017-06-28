@@ -11,6 +11,7 @@ namespace GeoRAT.Core.PacketStruct
         public string OS { get;  set; }
         public string UserName { get;  set; }
         public string CPU { get; set; }
+
         public Info(string country, string os, string username, string cpu)
         {
             Country = country;
@@ -26,11 +27,10 @@ namespace GeoRAT.Core.PacketStruct
 
         }
 
-
         //for debug purpose 
         public override string ToString()
         {
-            return Country + Environment.NewLine + OS + Environment.NewLine + UserName;
+            return Country + Environment.NewLine + OS + Environment.NewLine + UserName + CPU;
 
         }
 

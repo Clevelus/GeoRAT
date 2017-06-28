@@ -17,10 +17,8 @@ namespace Client
         //Seems to work good 
 
         public static string GetOS()
-        {
-
-
-            string OS = string.Empty;
+        { 
+           string OS = string.Empty;
             using (ManagementObjectSearcher MS = new ManagementObjectSearcher("SELECT Caption FROM Win32_OperatingSystem"))
             {
 
@@ -29,11 +27,9 @@ namespace Client
                     OS = _m["Caption"].ToString();
                 }
             }
-
-        
+  
             return OS;
             
-
         }
 
        
@@ -79,7 +75,7 @@ namespace Client
             {
                 Console.WriteLine("Error {0}", e.Message);
             }
-
+            
             return ret;
         }
     

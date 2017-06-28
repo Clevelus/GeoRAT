@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio\2017\community\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="15.0">
+ <Targets>
+  <Target Name="D:\RAT\GeoRat\GeoRat\GeoRAT.Core\bin\Debug\GeoRAT.Core.dll">
+   <Modules>
+    <Module Name="georat.core.dll">
+     <Namespaces>
+      <Namespace Name="GeoRAT.Core.Commands">
+       <Types>
+        <Type Name="CommandSerializer" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Deserialize(System.Byte[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2017-06-27 22:55:51Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="D:\RAT\GeoRat\GeoRat\GeoRAT.Core\Commands" File="CommandSerializer.cs" Line="37">Object 'stream' can be disposed more than once in method 'CommandSerializer.Deserialize(byte[])'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 37</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Serialize(GeoRAT.Core.Commands.Commands)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2017-06-27 22:55:51Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="D:\RAT\GeoRat\GeoRat\GeoRAT.Core\Commands" File="CommandSerializer.cs" Line="22">Object 'stream' can be disposed more than once in method 'CommandSerializer.Serialize(Commands)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 22</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="GeoRAT.Core.Compressor">
+       <Types>
+        <Type Name="Compression" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Compress(System.Byte[])" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2017-06-27 22:55:51Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="D:\RAT\GeoRat\GeoRat\GeoRAT.Core\Compressor" File="Compression.cs" Line="20">Object 'ms' can be disposed more than once in method 'Compression.Compress(byte[])'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 20</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Decompress(System.Byte[])" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2017-06-27 22:55:51Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="D:\RAT\GeoRat\GeoRat\GeoRAT.Core\Compressor" File="Compression.cs" Line="37">Object 'ms' can be disposed more than once in method 'Compression.Decompress(byte[])'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 37</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="GeoRAT.Core.PacketStruct">
+       <Types>
+        <Type Name="Serializer" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Deserialize(System.Byte[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2017-06-27 22:55:51Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="D:\RAT\GeoRat\GeoRat\GeoRAT.Core\PacketStruct" File="Serializer.cs" Line="43">Object 'stream' can be disposed more than once in method 'Serializer.Deserialize(byte[])'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 43</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Serialize(GeoRAT.Core.PacketStruct.Info)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2017-06-27 22:55:51Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="D:\RAT\GeoRat\GeoRat\GeoRAT.Core\PacketStruct" File="Serializer.cs" Line="24">Object 'stream' can be disposed more than once in method 'Serializer.Serialize(Info)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 24</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202">
+   <Name>Do not dispose objects multiple times</Name>
+   <Description>A correctly implemented Dispose method can be called multiple times without throwing an exception. However, this is not guaranteed and to avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.</Description>
+   <Resolution Name="Default">Object {0} can be disposed more than once in method {1}. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 37</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182334.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="15.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">Category</String>
+  <String Key="Certainty">Certainty</String>
+  <String Key="CollapseAll">Collapse All</String>
+  <String Key="CheckId">Check Id</String>
+  <String Key="Error">Error</String>
+  <String Key="Errors">error(s)</String>
+  <String Key="ExpandAll">Expand All</String>
+  <String Key="Help">Help</String>
+  <String Key="Line">Line</String>
+  <String Key="Messages">message(s)</String>
+  <String Key="LocationNotStoredInPdb">[Location not stored in Pdb]</String>
+  <String Key="Project">Project</String>
+  <String Key="Resolution">Resolution</String>
+  <String Key="Rule">Rule</String>
+  <String Key="RuleFile">Rule File</String>
+  <String Key="RuleDescription">Rule Description</String>
+  <String Key="Source">Source</String>
+  <String Key="Status">Status</String>
+  <String Key="Target">Target</String>
+  <String Key="Warning">Warning</String>
+  <String Key="Warnings">warning(s)</String>
+  <String Key="ReportTitle">Code Analysis Report</String>
+ </Localized>
+</FxCopReport>

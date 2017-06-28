@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Net.Sockets;
 using System.Reflection;
 using Client;
-using Cliet;
 using GeoRAT.Client.CommandHandlers;
 using GeoRAT.Client.Network;
 using GeoRAT.Client.Runtime;
@@ -86,7 +85,7 @@ namespace GeoRAT.Client
 
         static void OnDisconnectedHandler(Socket socket)
         {
-            socket.Close();
+           
             socket.Dispose();
             Process.GetCurrentProcess().Kill();
         }

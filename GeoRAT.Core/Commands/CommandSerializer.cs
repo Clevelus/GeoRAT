@@ -10,7 +10,6 @@ namespace GeoRAT.Core.Commands
     public class CommandSerializer : ICommandSerializer<Commands>
     {
 
-
      public byte[] Serialize(Commands cmd)
         {
             using (MemoryStream stream = new MemoryStream())
